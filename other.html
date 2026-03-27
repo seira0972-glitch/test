@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>其他資源 - MyWebsite</title>
+    <style>
+        :root { --primary-gradient: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Microsoft JhengHei", sans-serif; }
+        body { background-color: #f8f9fa; padding-top: 70px; }
+        
+        .header-banner { height: 30vh; background: var(--primary-gradient); display: flex; justify-content: center; align-items: center; color: white; }
+        
+        .grid-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { color: #6a11cb; margin-bottom: 10px; }
+        .card p { color: #777; font-size: 0.95rem; }
+    </style>
+</head>
+<body>
+    <div id="nav-placeholder"></div>
+    <section class="header-banner"><h1>其他內容</h1></section>
+
+    <main class="grid-container">
+        <div class="card">
+            <h3>專案 A</h3>
+            <p>這是一個關於數據分析的實驗性專案。</p>
+        </div>
+        <div class="card">
+            <h3>專案 B</h3>
+            <p>使用 HTML/CSS 打造的響應式模板。</p>
+        </div>
+        <div class="card">
+            <h3>日誌</h3>
+            <p>記錄生活中的點滴與學習筆記。</p>
+        </div>
+    </main>
+
+    <script>
+        fetch('nav.html').then(r => r.text()).then(data => {
+            document.getElementById('nav-placeholder').innerHTML = data;
+            const toggle = document.getElementById('nav-toggle');
+            if (toggle) toggle.addEventListener('click', () => document.getElementById('nav-menu').classList.toggle('active'));
+        });
+    </script>
+</body>
+</html>
