@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>網站導航</title>
+    <style>
+        /* 基本樣式 */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* 導航欄樣式 */
+        .navbar {
+            background-color: #ffffff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .navbar-logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .navbar-menu {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar-menu li {
+            margin-left: 20px;
+        }
+
+        .navbar-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding: 5px 0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        /* hover 底線效果 */
+        .navbar-menu a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 0;
+            height: 2px;
+            background-color: #333;
+            transition: width 0.3s;
+        }
+
+        .navbar-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* 手機響應式 */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            height: 3px;
+            width: 25px;
+            background: #333;
+            margin: 4px 0;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-menu {
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background-color: #ffffff;
+                flex-direction: column;
+                overflow: hidden;
+                max-height: 0;
+                transition: max-height 0.3s ease-out;
+            }
+
+            .navbar-menu li {
+                margin: 15px 0;
+                text-align: center;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .navbar-menu.active {
+                max-height: 300px; /* 可依實際數量調整 */
+                transition: max-height 0.5s ease-in;
+            }
+        }
+
+        /* 避免內容被導航欄擋住 */
+        main {
+            padding-top: 70px;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">Logo</a>
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="index.html">首頁</a></li>
+                <li><a href="about.html">關於我</a></li>
+                <li><a href="contact.html">聯繫方式</a></li>
+                <li><a href="other.html">其他分頁</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <h1>歡迎來到網站</h1>
+        <p>這裡是主要內容區塊。</p>
+    </main>
+
+    <script>
+        // 漢堡選單切換
+        const menuToggle = document.getElementById('menuToggle');
+        const navbarMenu = document.getElementById('navbarMenu');
+
+        menuToggle.addEventListener('click', () => {
+            navbarMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
