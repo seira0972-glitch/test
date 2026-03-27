@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首頁</title>
+    <style>
+        /* --- 全局 --- */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            scroll-behavior: smooth;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 70px 20px 20px; /* 預留導航欄空間 */
+        }
+
+        /* --- 區塊樣式 --- */
+        section {
+            max-width: 1000px;
+            margin: 0 auto 60px;
+            padding: 40px 20px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        h1, h2 {
+            margin-top: 0;
+        }
+
+        /* --- 歡迎區塊 --- */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        /* --- 自我介紹區塊 --- */
+        .about {
+            text-align: left;
+        }
+
+        /* --- 頁尾 --- */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0,0,0,0.2);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* --- 響應式 --- */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+            .hero p {
+                font-size: 1em;
+            }
+            section {
+                padding: 30px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 導航欄 -->
+    <div id="nav-placeholder"></div>
+
+    <main>
+        <!-- 歡迎區塊 -->
+        <section class="hero">
+            <h1>歡迎來到我的網站</h1>
+            <p>這裡是我的個人網站，展示我的作品與介紹自己。探索更多，認識我更多！</p>
+        </section>
+
+        <!-- 自我介紹 -->
+        <section class="about">
+            <h2>關於我</h2>
+            <p>
+                我是一名熱愛網頁設計與前端開發的人，喜歡將想法轉化為美觀且易用的網站。  
+                我熟悉 HTML、CSS、JavaScript，並且正在學習更多現代前端框架。  
+                希望透過這個網站展示我的作品和經驗。
+            </p>
+        </section>
+    </main>
+
+    <!-- 頁尾 -->
+    <footer>
+        &copy; 2026 我的網站 | All rights reserved
+    </footer>
+
+    <!-- --- JavaScript: 載入 nav.html --- -->
+    <script>
+        fetch('nav.html')
+            .then(response => {
+                if (!response.ok) throw new Error('載入導航欄失敗');
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('nav-placeholder').innerHTML = data;
+
+                // 因為 nav.html 有 JS 漢堡選單，需要重新綁定
+                const menuToggle = document.getElementById('menuToggle');
+                const navbarMenu = document.getElementById('navbarMenu');
+
+                if(menuToggle && navbarMenu) {
+                    menuToggle.addEventListener('click', () => {
+                        navbarMenu.classList.toggle('active');
+                    });
+                }
+            })
+            .catch(err => console.error(err));
+    </script>
+</body>
+</html>
