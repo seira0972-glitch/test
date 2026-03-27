@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聯繫方式 - MyWebsite</title>
+    <style>
+        :root { --primary-gradient: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Microsoft JhengHei", sans-serif; }
+        body { background-color: #f8f9fa; padding-top: 70px; }
+        
+        .header-banner { height: 30vh; background: var(--primary-gradient); display: flex; justify-content: center; align-items: center; color: white; }
+        
+        .container { max-width: 600px; margin: -40px auto 60px; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 5px; color: #666; }
+        input, textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; }
+        
+        button {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        button:hover { opacity: 0.9; }
+    </style>
+</head>
+<body>
+    <div id="nav-placeholder"></div>
+    <section class="header-banner"><h1>聯繫方式</h1></section>
+
+    <main class="container">
+        <form>
+            <div class="form-group">
+                <label>姓名</label>
+                <input type="text" placeholder="您的姓名">
+            </div>
+            <div class="form-group">
+                <label>電子郵件</label>
+                <input type="email" placeholder="example@mail.com">
+            </div>
+            <div class="form-group">
+                <label>訊息內容</label>
+                <textarea rows="5" placeholder="請輸入您的訊息..."></textarea>
+            </div>
+            <button type="submit">送出訊息</button>
+        </form>
+    </main>
+
+    <script>
+        fetch('nav.html').then(r => r.text()).then(data => {
+            document.getElementById('nav-placeholder').innerHTML = data;
+            const toggle = document.getElementById('nav-toggle');
+            if (toggle) toggle.addEventListener('click', () => document.getElementById('nav-menu').classList.toggle('active'));
+        });
+    </script>
+</body>
+</html>
