@@ -5,19 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>網站導航</title>
     <style>
-        /* 基本樣式 */
+        /* --- 基本樣式 --- */
         body {
             margin: 0;
             font-family: Arial, sans-serif;
         }
 
-        /* 導航欄樣式 */
+        main {
+            padding-top: 70px; /* 避免內容被固定導航欄遮擋 */
+        }
+
+        /* --- 導航欄 --- */
         .navbar {
-            background-color: #ffffff;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
+            background-color: #ffffff;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             z-index: 1000;
         }
@@ -54,8 +58,8 @@
             color: #333;
             font-weight: 500;
             padding: 5px 0;
-            transition: all 0.3s ease;
             position: relative;
+            transition: all 0.3s;
         }
 
         /* hover 底線效果 */
@@ -74,7 +78,7 @@
             width: 100%;
         }
 
-        /* 手機響應式 */
+        /* 漢堡選單按鈕 */
         .menu-toggle {
             display: none;
             flex-direction: column;
@@ -82,13 +86,14 @@
         }
 
         .menu-toggle span {
-            height: 3px;
             width: 25px;
+            height: 3px;
             background: #333;
             margin: 4px 0;
             transition: 0.3s;
         }
 
+        /* --- 響應式 --- */
         @media (max-width: 768px) {
             .navbar-menu {
                 position: absolute;
@@ -112,14 +117,9 @@
             }
 
             .navbar-menu.active {
-                max-height: 300px; /* 可依實際數量調整 */
+                max-height: 300px; /* 視菜單項目數量調整 */
                 transition: max-height 0.5s ease-in;
             }
-        }
-
-        /* 避免內容被導航欄擋住 */
-        main {
-            padding-top: 70px;
         }
 
     </style>
@@ -143,8 +143,8 @@
     </nav>
 
     <main>
-        <h1>歡迎來到網站</h1>
-        <p>這裡是主要內容區塊。</p>
+        <h1>網站內容</h1>
+        <p>這裡是頁面主要內容區。</p>
     </main>
 
     <script>
